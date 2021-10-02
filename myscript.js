@@ -12,6 +12,9 @@ inputBar.addEventListener('keydown',(e) =>{
   checkInput();
   };
 })
+plannedDate.addEventListener('focus',(e)=>{
+  e.target.type='date';
+})
 plannedDate.addEventListener('keydown',(e) =>{
   if (e.key === 'Enter'){
   checkInput();
@@ -42,6 +45,7 @@ function checkInput(){
     printTask(taskDescription, plannedDateValue);
     inputBar.value = "";
     plannedDate.value="";
+    plannedDate.type='text';
   }
 }
 /**
@@ -142,7 +146,7 @@ function updateStatus(){
   this.parentElement.parentElement.classList.toggle("completed");
   this.parentElement.parentElement.classList.toggle("uncompleted");
   this.parentElement.parentElement.classList.toggle("line-through");
-
+  filterTasks();
 }
 /**
  * Delete(remove) the deleted task Div from the DOM
@@ -175,7 +179,9 @@ function generateQuote(){
 /**
  * toggle hide and view classes of each task div according to the value of the filter and the status of the task. 
  */
- filter.addEventListener('change',()=>{
+ filter.addEventListener('change',filterTasks)
+ 
+ function filterTasks(){
   if(filter.value === "All"){
     allTasks = document.querySelectorAll(".task-box");
       for (const task of allTasks){
@@ -205,24 +211,30 @@ function generateQuote(){
       uncompletedTask.classList.add("view");
     }
  }
-});
+};
 /**
- * Sorts the tasks Div in the DOM by the date of insertion.  
+ * Sorts the tasks Div in the DOM by the planned date of completion.  
  */
 dateSort.addEventListener('change',()=>{
+  let elements =  (document.querySelectorAll(".animated-insertion"));
+  let elementsArray = [...elements];
   if(dateSort.value == 2){
-    let elements = document.querySelectorAll(".animated-insertion");
-    elementsLength = elements.length;
+    elementsLength = elements.length; 
     tasksDiv.innerHTML = "<span> </span>";
-    for(let i = elementsLength-1; i>=0 ;i--){
-      tasksDiv.append(elements[i]);
-    }
+    elementsArray.sort(function(a,b){
+      return Date.parse(b.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.innerText)-Date.parse(a.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.innerText)
+    })
+    for(let i = 0; i<elementsLength; i++){
+      tasksDiv.append(elementsArray[i]);
+   }
   } else if( dateSort.value == 1){
-    let elements = document.querySelectorAll(".animated-insertion");
     elementsLength = elements.length;
     tasksDiv.innerHTML = "<span> </span>";
-    for(let i = elementsLength-1; i>=0 ;i--){
-      tasksDiv.append(elements[i]);
+    elementsArray.sort(function(a,b){
+      return Date.parse(a.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.innerText)-Date.parse(b.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.innerText)
+    })
+    for(let i = 0; i<elementsLength; i++){
+      tasksDiv.append(elementsArray[i]);
     }
   }
 });
