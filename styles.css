@@ -1,0 +1,259 @@
+body {
+  background: linear-gradient(to right bottom, #0a0b0d, #053247);
+  color: #015249;
+  font-family: "Open Sans", sans-serif;
+  margin: 30px 15px;
+  min-height: 100vh;
+}
+.main-container {
+  background: linear-gradient(to right bottom, #77c9d4, #57bc90);
+  border-radius: 15px;
+  box-shadow: 10px 10px 20px;
+  display: flex;
+  flex-direction: column;
+}
+.sub-container {
+  padding: 0 10px 35px 10px;
+}
+@keyframes heading-animation {
+  from {
+    opacity: 0;
+    transform: rotate(-75deg) scale(0.1);
+  }
+}
+.heading-logo {
+  animation: heading-animation 3s;
+  color: #f3f2c9;
+  display: flex;
+  font: 700 1rem Montserrat, sans-serif;
+  justify-content: center;
+  padding: 25px 0 0 0;
+}
+.heading-logo > span {
+  display: flex;
+  align-items: center;
+}
+.outline {
+  position: relative;
+  transform: scale(1.25);
+  margin: 0 0 0 25px;
+}
+@keyframes check-animation {
+  from {
+    opacity: 0;
+    transform: rotate(-75deg) scale(0.1);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(0.85);
+  }
+}
+.check-mark {
+  animation: check-animation 3s;
+  animation-delay: 2s;
+  animation-fill-mode: both;
+  color: #015249;
+  position: absolute;
+}
+.user-input > div {
+  text-align: center;
+}
+.user-input > div > input {
+  background-color: #f3f2c9;
+  box-shadow: 10px 10px 20px #015249;
+  border: 2px solid #015249;
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: #015249;
+  font-family: "Open Sans", sans-serif;
+  padding: 0.5rem 1rem;
+  margin: 0 0 15px;
+  width: 80%;
+}
+#add-button {
+  background-color: #015249;
+  color: #f3f2c9;
+}
+#add-button:hover {
+  background-color: #f3f2c9;
+  color: #015249;
+}
+.filter-sort {
+  margin: 0 0 25px 0;
+}
+label > span {
+  display: inline-block;
+  min-width: 50px;
+}
+select {
+  width: 100px;
+  background-color: #f3f2c9;
+  border: none;
+}
+
+@keyframes motivation-insertion {
+  from {
+    color: #f3f2c9;
+    transform: scale(0.1) rotate(75deg);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+p.motivation {
+  animation: motivation-insertion 3s;
+  padding: 0 25px;
+  text-align: center;
+}
+@keyframes animated-insertion {
+  from {
+    transform: scale(0.1);
+  }
+}
+.animated-insertion {
+  animation: animated-insertion 1.25s;
+  margin: 0 0 10px 0;
+}
+.task-item {
+  display: flex;
+  align-items: center;
+}
+.task-item > p {
+  border-bottom: solid;
+  flex-grow: 1;
+  margin: 0 15px 0 5px;
+}
+.date-delete {
+  display: flex;
+  justify-content: end;
+}
+.date-delete > * {
+  border: 2px solid #015249;
+  border-radius: 5px;
+  font-family: "Open Sans", sans-serif;
+  margin: 10px 0 20px 5px;
+  padding: 5px;
+}
+.completion-date {
+  background-color: #f3f2c9;
+  color: #015249;
+}
+.delete-button {
+  background-color: #015249;
+  color: #f3f2c9;
+}
+.delete-button:hover {
+  background-color: #f3f2c9;
+  color: #015249;
+}
+.quotes-section {
+  text-align: center;
+}
+.completed {
+  background-color: #6ebb55b8;
+  border: 1.75px dashed rgb(51, 88, 9);
+  border-radius: 15px;
+}
+.line-through {
+  text-decoration: line-through;
+}
+.hide {
+  display: none;
+}
+.invalid-input {
+  color: red;
+  font-size: 11px;
+  margin: 0;
+}
+.invalid-input span {
+  transform: scale(0.75);
+  vertical-align: middle;
+}
+.pointer {
+  cursor: pointer;
+}
+
+@media (min-width: 600px) {
+  body {
+    margin: 60px 30px;
+  }
+  .heading-logo {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font: 700 2rem Montserrat, sans-serif;
+    margin: 0 0 50px 0;
+  }
+  .outline {
+    position: relative;
+    transform: scale(3);
+  }
+  .user-input > div > input {
+    padding: 0.75rem 1rem;
+  }
+  .filter-sort {
+    margin: 0 0 50px 25px;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .sort {
+    margin: 0 0 0 15px;
+  }
+  .sort > label > span {
+    min-width: 0;
+  }
+  p.motivation {
+    font-size: 1.5rem;
+  }
+  .task-box {
+    padding: 0 25px;
+    display: flex;
+  }
+  .task-item {
+    flex-grow: 1;
+  }
+  .date-delete > * {
+    padding: 10px;
+  }
+  .hide {
+    display: none;
+  }
+}
+@media (min-width: 1200px) {
+  body {
+    margin: 75px 50px;
+  }
+  .main-container {
+    flex-direction: row;
+    padding: 0 0 75px 0;
+  }
+  .sub-container {
+    flex-basis: 100%;
+  }
+  .left-border {
+    border-left: 3px solid #015249;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 50px 0;
+  }
+  .filter-sort {
+    align-self: flex-end;
+    margin: 30px 50px 50px 0;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .tasks {
+    margin: auto 0;
+  }
+  p.motivation {
+    font-size: 1.5rem;
+    margin-top: -200px;
+  }
+  .task-box {
+    padding: 0 25px;
+  }
+  .hide {
+    display: none;
+  }
+}
